@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>forgejo</Name>
+  <Repository>codeberg.org/forgejo/forgejo:13</Repository>
+  <Registry>https://codeberg.org/forgejo/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://forgejo.org/</Project>
+  <Overview/>
+  <Category>Productivity:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/mbainter/unraid-templates/refs/heads/main/forgejo/forgejo.xml</TemplateURL>
+  <Icon>https://codeberg.org/avatars/dae8ab126a96f6fbd6942cf08ab92382</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="DatabaseHost" Target="FORGEJO__database__HOST" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false" Default="postgresql:5432"/>
+  <Config Name="DatabaseName" Target="FORGEJO__database__NAME" Default="forgejo" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="false" Default="forgejo"/>
+  <Config Name="DatabasePassword" Target="FORGEJO__database__PASSWD" Default="" Mode="" Description="" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="DataPath" Target="/data" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false" Default="/mnt/user/appdata/forgejo/data"/>
+  <Config Name="SSH Port" Target="22" Default="" Mode="tcp" Description="" Type="Port" Display="advanced" Required="false" Mask="false" Default="2222"/>
+  <Config Name="DatabaseType" Target="FORGEJO__database__DB_TYPE" Default="postgres" Mode="" Description="" Type="Variable" Display="advanced" Required="true" Mask="false" Default="postgres"/>
+</Container>
