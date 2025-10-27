@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>dind</Name>
+  <Repository>docker:28-dind</Repository>
+  <Registry>https://hub.docker.com/_/docker/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>true</Privileged>
+  <Support/>
+  <Project>https://forgejo.org/</Project>
+  <Overview/>
+  <Category>Productivity:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/mbainter/unraid-templates/refs/heads/main/dind/dind.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs>dockerd -H tcp://0.0.0.0:2375 --tls=false</PostArgs>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+</Container>
