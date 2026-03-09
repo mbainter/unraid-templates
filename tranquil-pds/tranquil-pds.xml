@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>tranquil-pds</Name>
+  <Repository/>
+  <Registry>https://tangled.org/tranquil.farm/tranquil-pds</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://tangled.org/tranquil.farm/tranquil-pds</Project>
+  <Overview/>
+  <Category>Productivity:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/mbainter/unraid-templates/refs/heads/main/tranquil-pds/tranquil-pds.xml</TemplateURL>
+  <Icon>https://avatar.tangled.sh/a0ff2f306448fd57a707bad5e0a8be88d4ad67ed89447c7bf84b66a2bfa5de42/did:web:tranquil.tranquil.farm</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PDS Hostname" Target="PDS_HOSTNAME" Default="" Mode="" Description="Public hostname of the PDS (e.g. `pds.example.com`)." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Database URL" Target="DATABASE_URL" Default="" Mode="" Description="PostgreSQL connection URL." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="JWT Secret" Target="JWT_SECRET" Default="" Mode="" Description="Secret used for signing JWTs. Must be at least 32 characters in production." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="DPOP Secret" Target="DPOP_SECRET" Default="" Mode="" Description="Secret used for DPoP proof validation. Must be at least 32 characters in production." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Master Key" Target="MASTER_KEY" Default="" Mode="" Description="Master key used for key-encryption and HKDF derivation. Must be at least 32 characters in production." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Server Host" Target="SERVER_HOST" Default="127.0.0.1" Mode="" Description="Address to bind the HTTP server to." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Server Port" Target="SERVER_PORT" Default="3000" Mode="" Description="Port to bind the HTTP server to." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="User Handle Domains" Target="PDS_USER_HANDLE_DOMAINS" Default="" Mode="" Description="List of domains for user handles. Defaults to the PDS hostname when not set." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Available User Domains" Target="AVAILABLE_USER_DOMAINS" Default="" Mode="" Description="List of domains available for user registration. Defaults to the PDS hostname when not set." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Enable PDS Hosted DID Web" Target="ENABLE_PDS_HOSTED_DID_WEB" Default="false" Mode="" Description="Enable PDS-hosted did:web identities. Hosting did:web requires a long-term commitment to serve DID documents; opt-in only." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Age Assurance Override" Target="PDS_AGE_ASSURANCE_OVERRIDE" Default="false" Mode="" Description="When set to true, skip age-assurance birthday prompt for all accounts." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Invite Code Required" Target="INVITE_CODE_REQUIRED" Default="true" Mode="" Description="Require an invite code for new account registration." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Allow HTTP Proxy" Target="ALLOW_HTTP_PROXY" Default="false" Mode="" Description="Allow HTTP (non-TLS) proxy requests. Only useful during development." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Disable Rate Limiting" Target="DISABLE_RATE_LIMITING" Default="false" Mode="" Description="Disable all rate limiting. Should only be used in testing." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Banned Words" Target="PDS_BANNED_WORDS" Default="" Mode="" Description="List of additional banned words for handle validation." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Privacy Policy URL" Target="PRIVACY_POLICY_URL" Default="" Mode="" Description="URL to a privacy policy page." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Terms of Service URL" Target="TERMS_OF_SERVICE_URL" Default="" Mode="" Description="URL to terms of service page." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Contact Email" Target="CONTACT_EMAIL" Default="" Mode="" Description="Operator contact email address." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Max Blob Size" Target="MAX_BLOB_SIZE" Default="10737418240" Mode="" Description="Maximum allowed blob size in bytes (default 10 GiB)." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Database Max Connections" Target="DATABASE_MAX_CONNECTIONS" Default="100" Mode="" Description="Maximum number of connections in the pool." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Database Min Connections" Target="DATABASE_MIN_CONNECTIONS" Default="10" Mode="" Description="Minimum number of idle connections kept in the pool." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Database Acquire Timeout" Target="DATABASE_ACQUIRE_TIMEOUT_SECS" Default="10" Mode="" Description="Timeout in seconds when acquiring a connection from the pool." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="PLC Rotation Key" Target="PLC_ROTATION_KEY" Default="" Mode="" Description="PLC rotation key (DID key). If not set, user-level keys are used." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="Allow Insecure Secrets" Target="TRANQUIL_PDS_ALLOW_INSECURE_SECRETS" Default="false" Mode="" Description="Allow insecure/test secrets. NEVER enable in production." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Blob Storage Backend" Target="BLOB_STORAGE_BACKEND" Default="filesystem" Mode="" Description="Storage backend: `filesystem` or `s3`." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Blob Storage Path" Target="BLOB_STORAGE_PATH" Default="/var/lib/tranquil-pds/blobs" Mode="" Description="Path on disk for the filesystem blob backend." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="S3 Bucket" Target="S3_BUCKET" Default="" Mode="" Description="S3 bucket name for blob storage." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="S3 Endpoint" Target="S3_ENDPOINT" Default="" Mode="" Description="Custom S3 endpoint URL (for MinIO, R2, etc.)." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Backup Enabled" Target="BACKUP_ENABLED" Default="true" Mode="" Description="Enable automatic backups." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Backup Storage Backend" Target="BACKUP_STORAGE_BACKEND" Default="filesystem" Mode="" Description="Backup storage backend: `filesystem` or `s3`." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Backup Storage Path" Target="BACKUP_STORAGE_PATH" Default="/var/lib/tranquil-pds/backups" Mode="" Description="Path on disk for the filesystem backup backend." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Backup S3 Bucket" Target="BACKUP_S3_BUCKET" Default="" Mode="" Description="S3 bucket name for backups." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Backup Retention Count" Target="BACKUP_RETENTION_COUNT" Default="7" Mode="" Description="Number of backup revisions to keep per account." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Backup Interval" Target="BACKUP_INTERVAL_SECS" Default="86400" Mode="" Description="Seconds between backup runs." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Cache Backend" Target="CACHE_BACKEND" Default="ripple" Mode="" Description="Cache backend: `ripple` (default, built-in gossip) or `valkey`." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Valkey URL" Target="VALKEY_URL" Default="" Mode="" Description="Valkey / Redis connection URL. Required when `backend = &quot;valkey&quot;`." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Ripple Bind Address" Target="RIPPLE_BIND" Default="0.0.0.0:0" Mode="" Description="Address to bind the Ripple gossip protocol listener." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Ripple Peers" Target="RIPPLE_PEERS" Default="" Mode="" Description="List of seed peer addresses." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Ripple Machine ID" Target="RIPPLE_MACHINE_ID" Default="" Mode="" Description="Unique machine identifier. Auto-derived from hostname when not set." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Ripple Gossip Interval" Target="RIPPLE_GOSSIP_INTERVAL_MS" Default="200" Mode="" Description="Gossip protocol interval in milliseconds." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Ripple Cache Max MB" Target="RIPPLE_CACHE_MAX_MB" Default="256" Mode="" Description="Maximum cache size in megabytes." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="PLC Directory URL" Target="PLC_DIRECTORY_URL" Default="https://plc.directory" Mode="" Description="Base URL of the PLC directory." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="PLC Timeout" Target="PLC_TIMEOUT_SECS" Default="10" Mode="" Description="HTTP request timeout in seconds." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="PLC Connect Timeout" Target="PLC_CONNECT_TIMEOUT_SECS" Default="5" Mode="" Description="TCP connect timeout in seconds." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="DID Cache TTL" Target="DID_CACHE_TTL_SECS" Default="300" Mode="" Description="Seconds to cache DID documents in memory." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Firehose Buffer Size" Target="FIREHOSE_BUFFER_SIZE" Default="10000" Mode="" Description="Size of the in-memory broadcast buffer for firehose events." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Firehose Backfill Hours" Target="FIREHOSE_BACKFILL_HOURS" Default="72" Mode="" Description="How many hours of historical events to replay for cursor-based firehose connections." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Firehose Max Lag" Target="FIREHOSE_MAX_LAG" Default="5000" Mode="" Description="Maximum number of lagged events before disconnecting a slow consumer." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Crawlers" Target="CRAWLERS" Default="" Mode="" Description="List of relay / crawler notification URLs." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Mail From Address" Target="MAIL_FROM_ADDRESS" Default="" Mode="" Description="Sender email address. When unset, email sending is disabled." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Mail From Name" Target="MAIL_FROM_NAME" Default="Tranquil PDS" Mode="" Description="Display name used in the `From` header." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Sendmail Path" Target="SENDMAIL_PATH" Default="/usr/sbin/sendmail" Mode="" Description="Path to the `sendmail` binary." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Discord Bot Token" Target="DISCORD_BOT_TOKEN" Default="" Mode="" Description="Discord bot token. When unset, Discord integration is disabled." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="Telegram Bot Token" Target="TELEGRAM_BOT_TOKEN" Default="" Mode="" Description="Telegram bot token. When unset, Telegram integration is disabled." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="Telegram Webhook Secret" Target="TELEGRAM_WEBHOOK_SECRET" Default="" Mode="" Description="Secret token for incoming webhook verification." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="Signal CLI Path" Target="SIGNAL_CLI_PATH" Default="/usr/local/bin/signal-cli" Mode="" Description="Path to the `signal-cli` binary." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Signal Sender Number" Target="SIGNAL_SENDER_NUMBER" Default="" Mode="" Description="Sender phone number. When unset, Signal integration is disabled." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Notification Poll Interval" Target="NOTIFICATION_POLL_INTERVAL_MS" Default="1000" Mode="" Description="Polling interval in milliseconds for the comms queue." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Notification Batch Size" Target="NOTIFICATION_BATCH_SIZE" Default="100" Mode="" Description="Number of notifications to process per batch." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitHub Enabled" Target="SSO_GITHUB_ENABLED" Default="false" Mode="" Description="Enable GitHub SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitHub Client ID" Target="SSO_GITHUB_CLIENT_ID" Default="" Mode="" Description="GitHub OAuth client ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitHub Client Secret" Target="SSO_GITHUB_CLIENT_SECRET" Default="" Mode="" Description="GitHub OAuth client secret." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="SSO GitHub Display Name" Target="SSO_GITHUB_DISPLAY_NAME" Default="" Mode="" Description="Display name for GitHub SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Discord Enabled" Target="SSO_DISCORD_ENABLED" Default="false" Mode="" Description="Enable Discord SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Discord Client ID" Target="SSO_DISCORD_CLIENT_ID" Default="" Mode="" Description="Discord OAuth client ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Discord Client Secret" Target="SSO_DISCORD_CLIENT_SECRET" Default="" Mode="" Description="Discord OAuth client secret." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="SSO Discord Display Name" Target="SSO_DISCORD_DISPLAY_NAME" Default="" Mode="" Description="Display name for Discord SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Google Enabled" Target="SSO_GOOGLE_ENABLED" Default="false" Mode="" Description="Enable Google SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Google Client ID" Target="SSO_GOOGLE_CLIENT_ID" Default="" Mode="" Description="Google OAuth client ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Google Client Secret" Target="SSO_GOOGLE_CLIENT_SECRET" Default="" Mode="" Description="Google OAuth client secret." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="SSO Google Display Name" Target="SSO_GOOGLE_DISPLAY_NAME" Default="" Mode="" Description="Display name for Google SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitLab Enabled" Target="SSO_GITLAB_ENABLED" Default="false" Mode="" Description="Enable GitLab SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitLab Client ID" Target="SSO_GITLAB_CLIENT_ID" Default="" Mode="" Description="GitLab OAuth client ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitLab Client Secret" Target="SSO_GITLAB_CLIENT_SECRET" Default="" Mode="" Description="GitLab OAuth client secret." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="SSO GitLab Issuer" Target="SSO_GITLAB_ISSUER" Default="" Mode="" Description="GitLab issuer URL." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO GitLab Display Name" Target="SSO_GITLAB_DISPLAY_NAME" Default="" Mode="" Description="Display name for GitLab SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO OIDC Enabled" Target="SSO_OIDC_ENABLED" Default="false" Mode="" Description="Enable generic OIDC SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO OIDC Client ID" Target="SSO_OIDC_CLIENT_ID" Default="" Mode="" Description="OIDC client ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO OIDC Client Secret" Target="SSO_OIDC_CLIENT_SECRET" Default="" Mode="" Description="OIDC client secret." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="SSO OIDC Issuer" Target="SSO_OIDC_ISSUER" Default="" Mode="" Description="OIDC issuer URL." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO OIDC Display Name" Target="SSO_OIDC_DISPLAY_NAME" Default="" Mode="" Description="Display name for OIDC SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Apple Enabled" Target="SSO_APPLE_ENABLED" Default="false" Mode="" Description="Enable Apple SSO." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Apple Client ID" Target="SSO_APPLE_CLIENT_ID" Default="" Mode="" Description="Apple client ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Apple Team ID" Target="SSO_APPLE_TEAM_ID" Default="" Mode="" Description="Apple team ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Apple Key ID" Target="SSO_APPLE_KEY_ID" Default="" Mode="" Description="Apple key ID." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="SSO Apple Private Key" Target="SSO_APPLE_PRIVATE_KEY" Default="" Mode="" Description="Apple private key." Type="Variable" Display="advanced-hide" Required="false" Mask="true"/>
+  <Config Name="Report Service URL" Target="REPORT_SERVICE_URL" Default="" Mode="" Description="External report-handling service URL." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Report Service DID" Target="REPORT_SERVICE_DID" Default="" Mode="" Description="DID of the external report-handling service." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Accepting Repo Imports" Target="ACCEPTING_REPO_IMPORTS" Default="true" Mode="" Description="Whether the PDS accepts repo imports." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Max Import Size" Target="MAX_IMPORT_SIZE" Default="1073741824" Mode="" Description="Maximum allowed import archive size in bytes (default 1 GiB)." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Max Import Blocks" Target="MAX_IMPORT_BLOCKS" Default="500000" Mode="" Description="Maximum number of blocks allowed in an import." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Skip Import Verification" Target="SKIP_IMPORT_VERIFICATION" Default="false" Mode="" Description="Skip CAR verification during import. Only for development/debugging." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+  <Config Name="Scheduled Delete Check Interval" Target="SCHEDULED_DELETE_CHECK_INTERVAL_SECS" Default="3600" Mode="" Description="Interval in seconds between scheduled delete checks." Type="Variable" Display="advanced-hide" Required="false" Mask="false"/>
+</Container>
