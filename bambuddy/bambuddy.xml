@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>bambuddy</Name>
+  <Repository>ghcr.io/maziggy/bambuddy:latest</Repository>
+  <Registry>https://github.com/maziggy/bambuddy/</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://bambuddy.cool/</Project>
+  <Overview/>
+  <Category>Productivity:</Category>
+  <WebUI>http://[IP]:[PORT:8000]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/mbainter/unraid-templates/refs/heads/main/bambuddy/bambuddy.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/maziggy/bambuddy/refs/heads/main/static/img/android-chrome-192x192.png</Icon>
+  <ExtraParams>--cap-add=NET_BIND_SERVICE</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="DataPath" Target="/app/data" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false" Default="/mnt/user/appdata/bambuddy/data"/>
+  <Config Name="LogsPath" Target="/app/logs" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false" Default="/mnt/user/appdata/bambuddy/logs"/>
+  <Config Name="BackupsPath" Target="/app/backups" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false" Default="/mnt/user/appdata/bambuddy/backups"/>
+  <Config Name="VirtualPrinter" Target="/app/data/virtualprinter" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false" Default="/mnt/user/appdata/bambuddy/virtualprinter"/>
+</Container>
